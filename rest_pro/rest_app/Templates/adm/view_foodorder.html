@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Table 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='{% static 'view_chef/https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css' %}'>
+
+	<link rel="stylesheet" href="{% static 'view_chef/ttps://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'view_chef/css/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Table #03</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="text-center mb-4">Create Your Domain Name</h4>
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+					        <th>FOODNAME</th>
+
+
+					        <th>food Order status</th>
+
+					      </tr>
+					    </thead>
+					    <tbody>
+						{% for i in data %}
+					      <tr>
+
+					        <td>{{i.food_name}}</td>
+<td>{% if i.order_status == 0 %}
+
+                 <a href="{% url 'confirm_order' i.id %}"><b style="color:red;">Confirm</b></a>/
+                <a href="{% url 'rej_order' i.id %}"><b style="color:yellow;">Reject</b></a>
+                {% elif i.order_status == 1 %}
+                <p style="color:Green;">Approved</p>
+                {% else %}
+                <p>Order Rejected</p>
+                {% endif %}
+            </td>
+
+
+
+					      </tr>
+						{% endfor %}
+
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="{% static 'view_chef/js/jquery.min.js' %}"></script>
+  <script src="{% static 'view_chef/js/popper.js' %}"></script>
+  <script src="{% static 'view_chef/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'view_chef/js/main.js' %}"></script>
+
+	</body>
+</html>
+
